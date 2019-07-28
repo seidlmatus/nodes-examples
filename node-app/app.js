@@ -1,1 +1,2 @@
-console.log('Hello World')
+const getNotes = require('./notes.js')
+console.log(getNotes());
