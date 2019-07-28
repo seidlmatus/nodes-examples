@@ -1,24 +1,27 @@
-const getNotes = require('./notes.js')
-const validator = require('validator')
+const yargs = require('yargs')
 
-const chalk = require('chalk')
+yargs.version('1.1.0')
 
+//create add command
+yargs.command({
+    command: 'add',
+    describe:'add a new note',
+    builder:{
+        title:{
+            describe:'Note title',
+            demandOption: true,
+            type:'string'
+        },
+        body:{
+            describe:'Note body',
+            demandOption: true,
+            type:'string'
+        }
+    },
+    handler: function(argv){
+        console.log('Title: '+ argv.title)
+        console.log('Body: '+ argv.body)
+    }
+})
 
-console.log(getNotes());
-
-console.log(validator.isEmail('email@email.com'));
-console.log(validator.isEmail('email@emailcom'));
-
-console.log(chalk.blue('npm install chalk'));
-console.log(chalk.underline.bold.blue('underline, bold and blue'));
-
-
-//read arg
-const command = process.argv[2]
-const title = process.argv[3]
-
-if(command == 'add'){
-    console.log('Adding note! ' + title)
-}else if (command == 'remove'){
-    console.log('Removing note!')
-}
+yargs.parse()
