@@ -1,16 +1,14 @@
-const fs = require('fs')
+const fs = require('fs');
 const book = {
     title: 'Ego is The Enemy',
-    author:'Ryan Holiday'
-}
+    author:'Ryan Holiday',
+    price: 10.50
+};
 
-//console.log(JSON.stringify(book))
-//const parsedData = JSON.parse("{\"title\":\"Ego is The Enemy\",\"author\":\"Ryan Holiday\"}\n")
-//console.log(parsedData.author)
+fs.writeFileSync('book.json',JSON.stringify(book));
 
-//fs.writeFileSync('book.json',JSON.stringify(book));
-
-const dataBuffer = fs.readFileSync('book.json')
+const dataBuffer = fs.readFileSync('book.json');
 const dataJson = dataBuffer.toString();
 const data = JSON.parse(dataJson);
-console.log(data)
+
+console.log(data);
